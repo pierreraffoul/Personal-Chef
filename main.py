@@ -46,11 +46,6 @@ def main():
             break
         
 
-        response = agent.invoke(
-            {"messages" : [HumanMessage(content = input_user)]},
-            config=config
-        )
-
         print("Chef : ", end="", flush=True)
 
         for token, metadata in agent.stream(
