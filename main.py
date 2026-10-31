@@ -29,6 +29,7 @@ def main():
 
         config = {"configurable" : {"thread_id" : "conversation-1"}}
 
+        print() # saut de ligne à la fin de la réponse
         input_user = input("Entrez un message : ")
         if input_user.lower() in ("quit", "exit", "q"):
             break
@@ -38,7 +39,19 @@ def main():
             {"messages" : [HumanMessage(content = input_user)]},
             config=config
         )
-        print(f"Chef : {response["messages"][-1].content}")
+
+        print("Chef : ", end="", flush=True)
+
+        for token, metadata in agent.stream(
+            {"messages" : [HumanMessage(content=input_user)]},
+            config=config,
+            stream_mode="messages",
+        ):
+            # N'affiche que le contenu textuel (ignore les chunks vides ou non-texte)
+            if token.content:
+                print(token.content, end="", flush=True)
+
+        print() # saut de ligne à la fin de la réponse
 
 
 
