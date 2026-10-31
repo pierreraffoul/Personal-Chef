@@ -1,0 +1,38 @@
+# Secrets
+.env
+.env.*
+!.env.example
+secrets.json
+*.pem
+*.key
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# LangChain / logs
+.langchain/
+*.log
+uvicorn.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,6 @@
+# On charge les variables d'environnements
+
+from dotenv import load_dotenv
+
+def load_config():
+    load_dotenv()
